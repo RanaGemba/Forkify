@@ -1,0 +1,27 @@
+# node.js
+
+node_modules/
+
+# build
+
+.bundle/
+ios/
+android/
+vendor/
+
+# custom packages
+
+local_modules/
+!local_modules/lib/
+
+# project files
+
+src/
+
+/**tests**
+babel.config.js
+jest.config.js
+metro.config.js
+react-native.config.js
+webpack.config.js
+index.js

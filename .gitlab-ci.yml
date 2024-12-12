@@ -1,0 +1,12 @@
+build-dev-code:
+  stage: build
+  script:
+    - echo done connectivity 
+    - node -v
+    - yarn install
+    - yarn build 
+   
+  tags:
+    - dev_admin
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "Dashboard"'

@@ -1,0 +1,16 @@
+# node.js
+node_modules/
+
+# build
+.bundle/
+ios/
+android/
+vendor/
+src/
+
+# custom packages
+local_modules/
+!local_modules/lib/
+
+# project files
+src/__generated__/
