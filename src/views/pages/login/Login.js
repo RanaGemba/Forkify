@@ -20,100 +20,176 @@ import bgImage from '../../../assets/images/assets/pasta.png'
 import { useDispatch } from 'react-redux'
 
 const Login = () => {
-
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
   return (
-    <div style={{ backgroundColor: 'green', minHeight: '100vh', width: '100%' }}>
-      <CContainer fluid className="w-100" style={{ minHeight: '100vh', padding: 0 }}>
-        {/* Set backgroundColor on CRow to make sure pink covers the full screen */}
-        <CRow className="w-100" style={{ minHeight: '100vh', backgroundColor: 'pink', margin: 0 }}>
-          <CCol
-            md={7} // Image column takes 60% width on medium screens and larger
-            className="d-none d-md-flex align-items-center justify-content-center p-0 m-0"
-            style={{ backgroundColor: 'primary' }} // Optional, since you want the image to fully cover
-          >
-            <img
-              src={bgImage}
-              alt="Descriptive Text"
-              className="img-fluid w-100 h-100"
-              style={{ objectFit: 'cover', maxHeight: '100vh', maxWidth: '100vw' }}
-            />
+    <div className="login-container">
+      <CContainer fluid className="login-wrapper">
+        <CRow className="login-row">
+          {/* Left Side - Image Section */}
+          <CCol md={6} className="image-section">
+            <img src={bgImage} alt="Welcome" className="image" />
           </CCol>
 
-          <CCol
-            md={5} // Login form column takes 40% width on medium screens and larger
-            className="d-flex flex-column "
-            style={{ backgroundColor: 'white', padding: '20px', minHeight: '100vh' }}
-          >
-            {/* Top Section - Title */}
-            <div>
-              <h1 style={{ color: '#0E5020' }}>Forkify</h1>
-            </div>
-
-            {/* Center Section - Login Form */}
-            <div className="w-100 d-flex justify-content-center" style={{ marginTop: 'auto' }}>
-              <CCard className="p-4 w-100" style={{ backgroundColor: 'white', borderWidth: 0 }}>
+          {/* Right Side - Form Section */}
+          <CCol md={6} className="form-section">
+            <div className="form-content">
+              {/* Logo / Title */}
+              <h1 className="brand-title">Forkify</h1>
+              
+              {/* Login Form */}
+              <CCard className="form-card">
                 <CCardBody>
                   <CForm>
-                    <p style={{ color: 'black', fontSize: 20, marginBottom: 0, fontWeight: 'bolder' }}>
-                      {'Admin  Sign in'}
-                    </p>
-                    <p style={{ color: '#9E9C9C', marginBottom: 40 }}>
-                      {'Want to login your store account? '}
-                      <a
-                        // href="/userAuth"
-                        onClickCapture={() => navigate('/userAuth')}
-                        style={{ color: '#0E5020', textDecoration: 'underline' }}
+                    <h2 className="form-title">Admin Sign in</h2>
+                    <p className="form-subtitle">
+                      Want to login to your store account?{' '}
+                      <span 
+                        onClickCapture={() => navigate('/userAuth')} 
+                        className="store-login-link"
                       >
                         Store Login
-                      </a>
+                      </span>
                     </p>
+                    
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon icon={cilUser} />
                       </CInputGroupText>
                       <CFormInput placeholder="Username" autoComplete="username" />
                     </CInputGroup>
+
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
                         <CIcon icon={cilLockLocked} />
                       </CInputGroupText>
-                      <CFormInput
-                        type="password"
-                        placeholder="Password"
-                        autoComplete="current-password"
-                      />
+                      <CFormInput type="password" placeholder="Password" autoComplete="current-password" />
                     </CInputGroup>
-                    <CButton
-                      style={{ backgroundColor: '#0E5020', color: 'white', width: '100%' }}
-                      className="px-4"
-                      // to='/dashboard'
+
+                    <CButton 
+                      className="login-button" 
                       onClick={() => dispatch({ type: 'setLoginState', isLoggedIn: true })}
                     >
                       Login
                     </CButton>
-                    {/* <p style={{ color: 'black', textAlign: 'center', fontSize: 15, marginTop: 20 }}>
-                      {'Want to login your store account? '}
-                      <a
-                        href="/store-login"
-                        style={{ color: '#0E5020', textDecoration: 'none' }}
-                      >
-                        Store Login
-                      </a>
-                    </p> */}
                   </CForm>
                 </CCardBody>
               </CCard>
             </div>
-
-            <div className="text-center" style={{ marginBottom: 'auto' }}></div>
           </CCol>
         </CRow>
       </CContainer>
+
+      {/* Styles */}
+      <style jsx>{`
+        .login-container {
+          background: linear-gradient(to top, #FFB6C1, #FFD700);
+          min-height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .login-wrapper {
+          max-width: 1200px;
+          width: 100%;
+        }
+
+        .login-row {
+          display: flex;
+          min-height: 100vh;
+          align-items: center;
+        }
+
+        .image-section {
+          display: none;
+          justify-content: center;
+          align-items: center;
+        }
+
+        @media (min-width: 768px) {
+          .image-section {
+            display: flex;
+          }
+        }
+
+        .image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+\        }
+
+        .form-section {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: rgba(255, 255, 255, 0.9);
+          padding: 40px;
+          border-radius: 15px;
+        }
+
+        .form-content {
+          width: 100%;
+          max-width: 400px;
+          text-align: center;
+        }
+
+        .brand-title {
+          font-size: 2.5rem;
+          color: #333;
+          font-weight: bold;
+          margin-bottom: 20px;
+        }
+
+        .form-card {
+          border: none;
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+          border-radius: 15px;
+        }
+
+        .form-title {
+          font-size: 1.8rem;
+          font-weight: bold;
+          color: #0E5020;
+          margin-bottom: 20px;
+        }
+
+        .form-subtitle {
+          font-size: 1rem;
+          color: #9E9C9C;
+          margin-bottom: 30px;
+        }
+
+        .store-login-link {
+          color: #0E5020;
+          text-decoration: underline;
+          cursor: pointer;
+        }
+
+        .login-button {
+          background-color: #0E5020;
+          color: white;
+          width: 100%;
+          padding: 14px;
+          border-radius: 25px;
+          font-size: 1.2rem;
+          transition: background-color 0.3s ease;
+          border: none;
+        }
+
+        .login-button:hover {
+          background-color: #0C3E18;
+        }
+
+        @media (max-width: 767px) {
+          .form-section {
+            padding: 25px;
+          }
+        }
+      `}</style>
     </div>
   )
 }
 
-export default Login
+export default Login;
