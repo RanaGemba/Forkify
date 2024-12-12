@@ -183,7 +183,7 @@ const LandingScreen = () => {
                       <CDropdownItem>Products</CDropdownItem>
                       <CDropdownItem>Restaurant Login</CDropdownItem>
                       <CDropdownItem>Order Food Online</CDropdownItem>
-                      <CDropdownItem onClick={() => navigate('login')}>Sign In</CDropdownItem>
+                      <CDropdownItem onClick={() => navigate('admin/auth/login')}>Sign In</CDropdownItem>
                     </CDropdownMenu>
                   </CDropdown>
                 ) : (
@@ -200,7 +200,7 @@ const LandingScreen = () => {
                     <CButton color="light" variant="ghost">
                       Order Food Online
                     </CButton>
-                    <CButton onClick={() => navigate('login')} color="light" variant="ghost">
+                    <CButton onClick={() => navigate('admin/auth/login')} color="light" variant="ghost">
                       Sign In
                     </CButton>
                   </>

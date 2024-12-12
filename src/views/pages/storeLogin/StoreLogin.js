@@ -24,6 +24,10 @@ const StoreLogin = () => {
 
   const [isOwner, setIsOwner] = useState(true)
 
+  const toggleLoginRole = () => {
+    setIsOwner(!isOwner)
+  }
+
   return (
     <div className="login-container">
       <CContainer fluid className="login-wrapper">
@@ -45,9 +49,9 @@ const StoreLogin = () => {
                   <CForm>
                     <h2 className="form-title">{isOwner ? 'Store Owner Sign in' : 'Store Employee Sign in'}</h2>
                     <p className="form-subtitle">
-                      Want to login to your store account?{' '}
+                      Want to login to your admin account?{' '}
                       <span
-                        onClickCapture={() => navigate('/login')}
+                        onClickCapture={() => navigate('/admin/auth/login')}
                         className="store-login-link"
                       >
                         Admin Login
@@ -77,6 +81,15 @@ const StoreLogin = () => {
                     >
                       Login
                     </CButton>
+                    <p className="form-subtitle">
+                      {isOwner ? 'Login as Store Employee? ' : 'Login as Store Owner? '}
+                      <span
+                        onClickCapture={toggleLoginRole}
+                        className="store-login-link"
+                      >
+                        {isOwner ? 'Login here' : 'Login here'}
+                      </span>
+                    </p>
                   </CForm>
                 </CCardBody>
               </CCard>
@@ -183,7 +196,7 @@ const StoreLogin = () => {
         }
 
         .login-button:hover {
-          background-color: #0C3E18;
+          background-color:rgb(244, 246, 245);
         }
 
         @media (max-width: 767px) {
