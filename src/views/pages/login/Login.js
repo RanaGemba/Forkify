@@ -31,7 +31,7 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       console.log('Sending login request with:', { email, password });
-      const response = await axios.post('https://dev-api.forkify.co/user/login', {
+      const response = await axios.post('https://cors-anywhere.herokuapp.com/https://dev-api.forkify.co/user/login', {
         email,
         password,
       }, {
