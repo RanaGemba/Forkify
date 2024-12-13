@@ -230,24 +230,20 @@ const Login = () => {
         username: username,
         password: password,
         scope: '',
-        client_id: 'your-client-id', // Replace with actual client_id
-        client_secret: 'your-client-secret', // Replace with actual client_secret
+        client_id: 'your-client-id', 
+        client_secret: 'your-client-secret', 
       })
 
       const { access_token, refresh_token } = response.data
 
-      // Store the tokens in localStorage for later use
       localStorage.setItem('access_token', access_token)
       localStorage.setItem('refresh_token', refresh_token)
 
-      // Set login state in Redux store (if using Redux for state management)
       dispatch({ type: 'setLoginState', isLoggedIn: true })
 
-      // Redirect to the dashboard or another protected page
-      navigate('/dashboard') // Update the path as per your application structure
+      navigate('/dashboard') 
 
     } catch (error) {
-      // If login fails, display an error message
       setErrorMessage('Invalid username or password.')
     }
   }
