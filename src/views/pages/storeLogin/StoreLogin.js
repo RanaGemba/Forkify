@@ -41,7 +41,7 @@ const StoreLogin = () => {
           <CCol md={6} className="form-section">
             <div className="form-content">
 
-              <h1 className="brand-title">Forkify</h1>
+              <h1 className="brand-title">🍔Forkify</h1>
               
 
               <CCard className="form-card">
